@@ -6,19 +6,62 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MyAccordion {
+        "color": string;
+        "description": string;
+        "label": string;
+        "width": string;
+    }
     interface RfDatePicker {
+    }
+    interface RfKanban {
+    }
+    interface RfKanbanBoard {
     }
     interface RfSelect {
     }
     interface RfSelectSearch {
     }
 }
+export interface MyAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyAccordionElement;
+}
 declare global {
+    interface HTMLMyAccordionElementEventMap {
+        "onToggle": any;
+    }
+    interface HTMLMyAccordionElement extends Components.MyAccordion, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMyAccordionElementEventMap>(type: K, listener: (this: HTMLMyAccordionElement, ev: MyAccordionCustomEvent<HTMLMyAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMyAccordionElementEventMap>(type: K, listener: (this: HTMLMyAccordionElement, ev: MyAccordionCustomEvent<HTMLMyAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMyAccordionElement: {
+        prototype: HTMLMyAccordionElement;
+        new (): HTMLMyAccordionElement;
+    };
     interface HTMLRfDatePickerElement extends Components.RfDatePicker, HTMLStencilElement {
     }
     var HTMLRfDatePickerElement: {
         prototype: HTMLRfDatePickerElement;
         new (): HTMLRfDatePickerElement;
+    };
+    interface HTMLRfKanbanElement extends Components.RfKanban, HTMLStencilElement {
+    }
+    var HTMLRfKanbanElement: {
+        prototype: HTMLRfKanbanElement;
+        new (): HTMLRfKanbanElement;
+    };
+    interface HTMLRfKanbanBoardElement extends Components.RfKanbanBoard, HTMLStencilElement {
+    }
+    var HTMLRfKanbanBoardElement: {
+        prototype: HTMLRfKanbanBoardElement;
+        new (): HTMLRfKanbanBoardElement;
     };
     interface HTMLRfSelectElement extends Components.RfSelect, HTMLStencilElement {
     }
@@ -33,20 +76,37 @@ declare global {
         new (): HTMLRfSelectSearchElement;
     };
     interface HTMLElementTagNameMap {
+        "my-accordion": HTMLMyAccordionElement;
         "rf-date-picker": HTMLRfDatePickerElement;
+        "rf-kanban": HTMLRfKanbanElement;
+        "rf-kanban-board": HTMLRfKanbanBoardElement;
         "rf-select": HTMLRfSelectElement;
         "rf-select-search": HTMLRfSelectSearchElement;
     }
 }
 declare namespace LocalJSX {
+    interface MyAccordion {
+        "color"?: string;
+        "description"?: string;
+        "label"?: string;
+        "onOnToggle"?: (event: MyAccordionCustomEvent<any>) => void;
+        "width"?: string;
+    }
     interface RfDatePicker {
+    }
+    interface RfKanban {
+    }
+    interface RfKanbanBoard {
     }
     interface RfSelect {
     }
     interface RfSelectSearch {
     }
     interface IntrinsicElements {
+        "my-accordion": MyAccordion;
         "rf-date-picker": RfDatePicker;
+        "rf-kanban": RfKanban;
+        "rf-kanban-board": RfKanbanBoard;
         "rf-select": RfSelect;
         "rf-select-search": RfSelectSearch;
     }
@@ -55,7 +115,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "my-accordion": LocalJSX.MyAccordion & JSXBase.HTMLAttributes<HTMLMyAccordionElement>;
             "rf-date-picker": LocalJSX.RfDatePicker & JSXBase.HTMLAttributes<HTMLRfDatePickerElement>;
+            "rf-kanban": LocalJSX.RfKanban & JSXBase.HTMLAttributes<HTMLRfKanbanElement>;
+            "rf-kanban-board": LocalJSX.RfKanbanBoard & JSXBase.HTMLAttributes<HTMLRfKanbanBoardElement>;
             "rf-select": LocalJSX.RfSelect & JSXBase.HTMLAttributes<HTMLRfSelectElement>;
             "rf-select-search": LocalJSX.RfSelectSearch & JSXBase.HTMLAttributes<HTMLRfSelectSearchElement>;
         }

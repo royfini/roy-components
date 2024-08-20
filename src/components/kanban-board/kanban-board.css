@@ -1,0 +1,47 @@
+.kanban-board {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  min-height: 200px;
+  position: relative;
+}
+
+.column h3 {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.item {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: grab;
+  transition: background-color 0.2s;
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+.item:hover {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+}
+
+.placeholder {
+  height: 40px;
+  margin: 5px 0;
+  background-color: #e0e0e0;
+  border: 2px dashed #bbb;
+  border-radius: 4px;
+}
